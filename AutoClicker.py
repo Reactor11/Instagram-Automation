@@ -28,8 +28,9 @@ def auto(rep,url):
             PROXY = list(get_proxies())
             if(len(PROXY) != 0):
                 chrome_options.add_argument("--window-size=1920x1080")
-                chrome_options.add_argument('--proxy-server=%s' % PROXY[np.random.randint(0,len(PROXY))])
-            driver = webdriver.Chrome(chrome_options=chrome_options)
+                chrome_options.add_argument('--proxy-server=%s' % PROXY[np.random.randint(0,len(PROXY))])    
+            loc = os.path.abspath(os.getcwd()) + "/chromedriver"
+            driver = webdriver.Chrome(loc, chrome_options=chrome_options)
             driver.get(url)
             time.sleep(np.random.randint(5,10))
             print("Successful click : ",i+1)
@@ -39,7 +40,6 @@ def auto(rep,url):
             print("ERROR : ",i+1)
             time.sleep(5)
 
-loc = os.path.abspath(os.getcwd()) + "\\chromedriver.exe"
 url = "https://www.socialmatte.com"
 rep = 200//10
 
