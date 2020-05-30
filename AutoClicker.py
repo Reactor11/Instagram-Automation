@@ -36,8 +36,8 @@ def auto(rep,url):
             print("Successful click : ",i+1)
             print("auto assigned to thread: {}\n\n".format(threading.current_thread().name))
             driver.quit()
-        except :
-            print("ERROR : ",i+1)
+        except Exception as e :
+            print("ERROR : ",e)
             time.sleep(5)
 
 url = "https://www.socialmatte.com"
