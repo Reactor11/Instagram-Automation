@@ -41,7 +41,7 @@ def auto(rep,url):
             time.sleep(5)
 
 url = "https://www.socialmatte.com"
-rep = 200//10
+rep = 20//10
 
 t1 = threading.Thread(target=auto, name='t1',args=(rep,url,))
 t2 = threading.Thread(target=auto, name='t2',args=(rep,url,))
@@ -78,4 +78,3 @@ t9.join()
 t10.join()
 
 print("All done!")
-input()
