@@ -40,8 +40,8 @@ def auto(rep,url):
             time.sleep(5)
 
 loc = os.path.abspath(os.getcwd()) + "\\chromedriver.exe"
-url = str(input("Enter the url : "))
-rep = int(input("Enter the number of clicks : "))//10
+url = "https://www.socialmatte.com"
+rep = 200//10
 
 t1 = threading.Thread(target=auto, name='t1',args=(rep,url,))
 t2 = threading.Thread(target=auto, name='t2',args=(rep,url,))
