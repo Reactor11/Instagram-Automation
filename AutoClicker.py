@@ -5,6 +5,7 @@ import os
 import threading
 import requests
 import socket
+import sys
 from lxml.html import fromstring
 
 def get_proxies():
@@ -40,7 +41,7 @@ def auto(rep,url):
             print("ERROR : ",e)
             time.sleep(5)
 
-url = "https://www.socialmatte.com"
+url = str(sys.argv[1])
 rep = 20//10
 
 t1 = threading.Thread(target=auto, name='t1',args=(rep,url,))
