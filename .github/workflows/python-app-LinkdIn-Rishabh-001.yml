@@ -6,8 +6,8 @@ name: AutoClicker-LinkdIn-Rishabh-001
 on:
   push:
     branches: [ master ]
-#   schedule:
-#     - cron: "*/10 * * * *"
+  schedule:
+    - cron: "*/10 * * * *"
     
 jobs:
   build:
