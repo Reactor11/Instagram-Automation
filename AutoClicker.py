@@ -42,7 +42,7 @@ def auto(rep,url):
             time.sleep(5)
 
 url = str(sys.argv[1])
-rep = 20//10
+rep = np.random.randint(1,10)
 
 t1 = threading.Thread(target=auto, name='t1',args=(rep,url,))
 t2 = threading.Thread(target=auto, name='t2',args=(rep,url,))
