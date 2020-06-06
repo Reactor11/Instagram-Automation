@@ -33,4 +33,4 @@ jobs:
  
     - name: Run Script
       run: |
-        python AutoClicker.py "https://www.tummygotyummy.com"
+        python AutoClicker-tummygotyummy.py "https://www.tummygotyummy.com"
