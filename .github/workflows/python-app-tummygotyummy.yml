@@ -3,6 +3,10 @@
 
 name: AutoClicker-tummygotyummy
 
+on:
+  push:
+    branches: [ master ]
+
 jobs:
   build:
 
