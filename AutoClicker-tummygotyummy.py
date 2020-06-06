@@ -35,7 +35,7 @@ def auto(rep,url):
             driver.get(url)
             #time.sleep(np.random.randint(7,15))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(np.random.randint(7,15))
+            #time.sleep(np.random.randint(7,15))
             print("Successful click : ",i+1)
             driver.quit()
             #time.sleep(np.random.randint(7,15))
@@ -44,7 +44,7 @@ def auto(rep,url):
             time.sleep(5)
 
 url = str(sys.argv[1])
-rep = 500
+rep = 100
 
 auto(rep,url)
 
