@@ -33,12 +33,12 @@ def auto(rep,url):
             loc = os.path.abspath(os.getcwd()) + "/chromedriver"
             driver = webdriver.Chrome(loc, chrome_options=chrome_options)
             driver.get(url)
-            time.sleep(np.random.randint(7,15))
+            #time.sleep(np.random.randint(7,15))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(np.random.randint(7,15))
             print("Successful click : ",i+1)
             driver.quit()
-            time.sleep(30,45)
+            #time.sleep(np.random.randint(7,15))
         except Exception as e :
             print("ERROR : ",e)
             time.sleep(5)
