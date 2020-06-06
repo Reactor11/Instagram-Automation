@@ -29,14 +29,16 @@ def auto(rep,url):
             PROXY = list(get_proxies())
             if(len(PROXY) != 0):
                 chrome_options.add_argument("--window-size=1920x1080")
-                chrome_options.add_argument('--proxy-server=%s' % PROXY[np.random.randint(0,len(PROXY))])    
+                chrome_options.add_argument('--proxy-server=%s' % PROXY[np.random.randint(0,len(PROXY))])
             loc = os.path.abspath(os.getcwd()) + "/chromedriver"
             driver = webdriver.Chrome(loc, chrome_options=chrome_options)
             driver.get(url)
-            time.sleep(np.random.randint(5,10))
+            time.sleep(np.random.randint(7,15))
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(np.random.randint(7,15))
             print("Successful click : ",i+1)
-            print("auto assigned to thread: {}\n\n".format(threading.current_thread().name))
             driver.quit()
+            time.sleep(30,45)
         except Exception as e :
             print("ERROR : ",e)
             time.sleep(5)
@@ -44,11 +46,6 @@ def auto(rep,url):
 url = str(sys.argv[1])
 rep = 500
 
-for i in range(rep):
-  
-
-
-
-
+auto(rep,url)
 
 print("All done!")
