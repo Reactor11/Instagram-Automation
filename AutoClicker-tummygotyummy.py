@@ -8,12 +8,63 @@ import socket
 import sys
 from lxml.html import fromstring
 
+links = ['https://instagram.com/tummy_got_yummy',
+ 'https://www.instagram.com/tummy_got_yummy',
+ 'https://www.tummygotyummy.com/',
+ 'https://www.tummygotyummy.com/about-us/',
+ 'https://www.tummygotyummy.com/all-about-food/10-genius-healthy-recipes-to-fall-in-love-with-beans/',
+ 'https://www.tummygotyummy.com/all-about-food/best-bakery-in-chandigarh-you-should-not-miss/',
+ 'https://www.tummygotyummy.com/all-about-food/best-burger-in-delhi/',
+ 'https://www.tummygotyummy.com/all-about-food/top-7-places-to-beat-your-maggi-craving-in-delhi/',
+ 'https://www.tummygotyummy.com/all-about-food/try-the-best-burger-in-bangalore/',
+ 'https://www.tummygotyummy.com/category/all-about-food/',
+ 'https://www.tummygotyummy.com/category/beer/',
+ 'https://www.tummygotyummy.com/category/desserts/',
+ 'https://www.tummygotyummy.com/category/drinks/',
+ 'https://www.tummygotyummy.com/category/drinks/coffe/',
+ 'https://www.tummygotyummy.com/category/food/',
+ 'https://www.tummygotyummy.com/category/mojitos/',
+ 'https://www.tummygotyummy.com/category/reviewzone/',
+ 'https://www.tummygotyummy.com/category/scotch/',
+ 'https://www.tummygotyummy.com/category/thick-shakes/',
+ 'https://www.tummygotyummy.com/category/whiskey/',
+ 'https://www.tummygotyummy.com/contact/',
+ 'https://www.tummygotyummy.com/desserts/know-the-best-cake-shops-in-bangalore/',
+ 'https://www.tummygotyummy.com/drinks/top-benefits-of-lemon-juice/',
+ 'https://www.tummygotyummy.com/food/5-vegan-breakfast-you-can-have/',
+ 'https://www.tummygotyummy.com/food/best-biryani-in-hyderabad/',
+ 'https://www.tummygotyummy.com/food/best-candle-light-dinner-in-bangalore/',
+ 'https://www.tummygotyummy.com/food/best-pizza-places-in-delhi/',
+ 'https://www.tummygotyummy.com/food/best-romantic-cafe-in-delhi/',
+ 'https://www.tummygotyummy.com/food/best-street-food-in-delhi/',
+ 'https://www.tummygotyummy.com/food/best-veg-platter-for-you-and-your-companions-to-grab-in-delhi/',
+ 'https://www.tummygotyummy.com/food/candle-light-dinner-in-mumbai/',
+ 'https://www.tummygotyummy.com/food/food-festival-in-delhi/',
+ 'https://www.tummygotyummy.com/food/going-on-a-date-with-loved-one-let-me-make-it-easy/',
+ 'https://www.tummygotyummy.com/food/new-trends-to-make-instant-coffee/',
+ 'https://www.tummygotyummy.com/food/top-10-benefits-of-coffee/',
+ 'https://www.tummygotyummy.com/food/top-11-instagram-food-bloggers-from-india/',
+ 'https://www.tummygotyummy.com/food/top-scotch-whiskey-brands-under-2000rupees/',
+ 'https://www.tummygotyummy.com/food/try-the-best-pizza-place-in-bangalore/',
+ 'https://www.tummygotyummy.com/food/why-these-beer-brands-are-most-top-rated/',
+ 'https://www.tummygotyummy.com/healthy-life/tips-of-healthy-eating-for-a-healthy-body-weight/',
+ 'https://www.tummygotyummy.com/html-sitemap/',
+ 'https://www.tummygotyummy.com/page/2/',
+ 'https://www.tummygotyummy.com/privacy-policy/',
+ 'https://www.tummygotyummy.com/reviewzone/12-latest-decor-ideas-to-give-kitchen-a-stylish-look/',
+ 'https://www.tummygotyummy.com/reviewzone/7-romantic-weekend-dinner-date-ideas-to-try-in-dubai/',
+ 'https://www.tummygotyummy.com/write-for-us/']
+
 def get_proxies():
     url = 'https://free-proxy-list.net/'
     response = requests.get(url)
     parser = fromstring(response.text)
     proxies = set()
     for i in parser.xpath('//tbody/tr')[:10]:
+        if i.xpath('.//td[7][contains(text(),"yes")]') and i.xpath('.//td[3][contains(text(),"US")]'):
+            #Grabbing IP and corresponding PORT
+            proxy = ":".join([i.xpath('.//td[1]/text()')[0], i.xpath('.//td[2]/text()')[0]])
+            proxies.add(proxy)
         if i.xpath('.//td[7][contains(text(),"yes")]') and i.xpath('.//td[3][contains(text(),"IN")]'):
             #Grabbing IP and corresponding PORT
             proxy = ":".join([i.xpath('.//td[1]/text()')[0], i.xpath('.//td[2]/text()')[0]])
@@ -28,24 +79,93 @@ def auto(rep,url):
             chrome_options.add_argument("--headless")
             PROXY = list(get_proxies())
             if(len(PROXY) != 0):
+                chrome_options.add_argument('--proxy-server=%s' % PROXY[np.random.randint(0,len(PROXY))])
+            loc = os.path.abspath(os.getcwd()) + "/chromedriver"
+            driver = webdriver.Chrome(loc, chrome_options=chrome_options)
+            driver.maximize_window()
+            driver.get(url)
+            time.sleep(np.random.randint(5,10))
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(np.random.randint(5,10))
+            driver.get(links[np.random.randint(0,len(links)])
+            time.sleep(np.random.randint(5,10))
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(np.random.randint(5,10))
+            print("Successful click : ",i+1)
+            print("auto assigned to thread: {}\n\n".format(threading.current_thread().name))
+            driver.quit()
+        except Exception as e :
+            print("ERROR : ",e)
+            time.sleep(5)
+
+
+def auto_mobile(rep,url):
+    for i in range(rep):
+        try:
+            mobile_emulation = {"deviceMetrics": { "width": 360, "height": 640, "pixelRatio": 3.0 },"userAgent": "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"}
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument("--incognito")
+            chrome_options.add_argument("--headless")
+            chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+            PROXY = list(get_proxies())
+            if(len(PROXY) != 0):
                 chrome_options.add_argument("--window-size=1920x1080")
                 chrome_options.add_argument('--proxy-server=%s' % PROXY[np.random.randint(0,len(PROXY))])
             loc = os.path.abspath(os.getcwd()) + "/chromedriver"
             driver = webdriver.Chrome(loc, chrome_options=chrome_options)
             driver.get(url)
-            #time.sleep(np.random.randint(7,15))
+            time.sleep(np.random.randint(5,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            #time.sleep(np.random.randint(7,15))
+            time.sleep(np.random.randint(5,10))
+            driver.get(links[np.random.randint(0,len(links)])
+            time.sleep(np.random.randint(5,10))
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(np.random.randint(5,10))
             print("Successful click : ",i+1)
+            print("auto assigned to thread: {}\n\n".format(threading.current_thread().name))
             driver.quit()
-            #time.sleep(np.random.randint(7,15))
         except Exception as e :
             print("ERROR : ",e)
             time.sleep(5)
 
-url = str(sys.argv[1])
-rep = 100
 
-auto(rep,url)
+
+
+url = str(sys.argv[1])
+rep = np.random.randint(1,10)
+
+t1 = threading.Thread(target=auto, name='t1',args=(rep,url,))
+t2 = threading.Thread(target=auto, name='t2',args=(rep,url,))
+t3 = threading.Thread(target=auto, name='t3',args=(rep,url,))
+t4 = threading.Thread(target=auto, name='t4',args=(rep,url,))
+t5 = threading.Thread(target=auto, name='t5',args=(rep,url,))
+t6 = threading.Thread(target=auto_mobile, name='t6',args=(rep,url,))
+t7 = threading.Thread(target=auto_mobile, name='t7',args=(rep,url,))
+t8 = threading.Thread(target=auto_mobile, name='t8',args=(rep,url,))
+t9 = threading.Thread(target=auto_mobile, name='t9',args=(rep,url,))
+t10 = threading.Thread(target=auto_mobile, name='t10',args=(rep,url,))
+
+
+t1.start()
+t2.start()
+t3.start()
+t4.start()
+t5.start()
+t6.start()
+t7.start()
+t8.start()
+t9.start()
+t10.start()
+
+t1.join()
+t2.join()
+t3.join()
+t4.join()
+t5.join()
+t6.join()
+t7.join()
+t8.join()
+t9.join()
+t10.join()
 
 print("All done!")
