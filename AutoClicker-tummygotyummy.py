@@ -87,7 +87,7 @@ def auto(rep,url):
             time.sleep(np.random.randint(5,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(np.random.randint(5,10))
-            driver.get(links[np.random.randint(0,len(links)])
+            driver.get(links[np.random.randint(0,len(links))])
             time.sleep(np.random.randint(5,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(np.random.randint(5,10))
