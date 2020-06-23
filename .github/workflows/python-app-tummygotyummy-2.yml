@@ -6,7 +6,7 @@ name: AutoClicker-tummygotyummy-2
 on:
   push:
     branches: [ master ]
- schedule:
+  schedule:
    - cron: "*/10 * * * *"
 
 jobs:
