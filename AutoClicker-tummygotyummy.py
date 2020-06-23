@@ -8,52 +8,7 @@ import socket
 import sys
 from lxml.html import fromstring
 
-links = ['https://instagram.com/tummy_got_yummy',
- 'https://www.instagram.com/tummy_got_yummy',
- 'https://www.tummygotyummy.com/',
- 'https://www.tummygotyummy.com/about-us/',
- 'https://www.tummygotyummy.com/all-about-food/10-genius-healthy-recipes-to-fall-in-love-with-beans/',
- 'https://www.tummygotyummy.com/all-about-food/best-bakery-in-chandigarh-you-should-not-miss/',
- 'https://www.tummygotyummy.com/all-about-food/best-burger-in-delhi/',
- 'https://www.tummygotyummy.com/all-about-food/top-7-places-to-beat-your-maggi-craving-in-delhi/',
- 'https://www.tummygotyummy.com/all-about-food/try-the-best-burger-in-bangalore/',
- 'https://www.tummygotyummy.com/category/all-about-food/',
- 'https://www.tummygotyummy.com/category/beer/',
- 'https://www.tummygotyummy.com/category/desserts/',
- 'https://www.tummygotyummy.com/category/drinks/',
- 'https://www.tummygotyummy.com/category/drinks/coffe/',
- 'https://www.tummygotyummy.com/category/food/',
- 'https://www.tummygotyummy.com/category/mojitos/',
- 'https://www.tummygotyummy.com/category/reviewzone/',
- 'https://www.tummygotyummy.com/category/scotch/',
- 'https://www.tummygotyummy.com/category/thick-shakes/',
- 'https://www.tummygotyummy.com/category/whiskey/',
- 'https://www.tummygotyummy.com/contact/',
- 'https://www.tummygotyummy.com/desserts/know-the-best-cake-shops-in-bangalore/',
- 'https://www.tummygotyummy.com/drinks/top-benefits-of-lemon-juice/',
- 'https://www.tummygotyummy.com/food/5-vegan-breakfast-you-can-have/',
- 'https://www.tummygotyummy.com/food/best-biryani-in-hyderabad/',
- 'https://www.tummygotyummy.com/food/best-candle-light-dinner-in-bangalore/',
- 'https://www.tummygotyummy.com/food/best-pizza-places-in-delhi/',
- 'https://www.tummygotyummy.com/food/best-romantic-cafe-in-delhi/',
- 'https://www.tummygotyummy.com/food/best-street-food-in-delhi/',
- 'https://www.tummygotyummy.com/food/best-veg-platter-for-you-and-your-companions-to-grab-in-delhi/',
- 'https://www.tummygotyummy.com/food/candle-light-dinner-in-mumbai/',
- 'https://www.tummygotyummy.com/food/food-festival-in-delhi/',
- 'https://www.tummygotyummy.com/food/going-on-a-date-with-loved-one-let-me-make-it-easy/',
- 'https://www.tummygotyummy.com/food/new-trends-to-make-instant-coffee/',
- 'https://www.tummygotyummy.com/food/top-10-benefits-of-coffee/',
- 'https://www.tummygotyummy.com/food/top-11-instagram-food-bloggers-from-india/',
- 'https://www.tummygotyummy.com/food/top-scotch-whiskey-brands-under-2000rupees/',
- 'https://www.tummygotyummy.com/food/try-the-best-pizza-place-in-bangalore/',
- 'https://www.tummygotyummy.com/food/why-these-beer-brands-are-most-top-rated/',
- 'https://www.tummygotyummy.com/healthy-life/tips-of-healthy-eating-for-a-healthy-body-weight/',
- 'https://www.tummygotyummy.com/html-sitemap/',
- 'https://www.tummygotyummy.com/page/2/',
- 'https://www.tummygotyummy.com/privacy-policy/',
- 'https://www.tummygotyummy.com/reviewzone/12-latest-decor-ideas-to-give-kitchen-a-stylish-look/',
- 'https://www.tummygotyummy.com/reviewzone/7-romantic-weekend-dinner-date-ideas-to-try-in-dubai/',
- 'https://www.tummygotyummy.com/write-for-us/']
+links = ["http://raboninco.com/15tuO"]
 
 def get_proxies():
     url = 'https://free-proxy-list.net/'
@@ -84,13 +39,13 @@ def auto(rep,url):
             driver = webdriver.Chrome(loc, chrome_options=chrome_options)
             driver.maximize_window()
             driver.get(url)
-            time.sleep(np.random.randint(5,10))
+            time.sleep(np.random.randint(7,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(np.random.randint(5,10))
-            driver.get(links[np.random.randint(0,len(links))])
-            time.sleep(np.random.randint(5,10))
+            time.sleep(np.random.randint(7,10))
+            driver.get(links[0])
+            time.sleep(np.random.randint(7,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(np.random.randint(5,10))
+            time.sleep(np.random.randint(7,10))
             print("Successful click : ",i+1)
             print("auto assigned to thread: {}\n\n".format(threading.current_thread().name))
             driver.quit()
@@ -114,13 +69,13 @@ def auto_mobile(rep,url):
             loc = os.path.abspath(os.getcwd()) + "/chromedriver"
             driver = webdriver.Chrome(loc, chrome_options=chrome_options)
             driver.get(url)
-            time.sleep(np.random.randint(5,10))
+            time.sleep(np.random.randint(7,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(np.random.randint(5,10))
-            driver.get(links[np.random.randint(0,len(links))])
-            time.sleep(np.random.randint(5,10))
+            time.sleep(np.random.randint(7,10))
+            driver.get(links[0])
+            time.sleep(np.random.randint(7,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(np.random.randint(5,10))
+            time.sleep(np.random.randint(7,10))
             print("Successful click : ",i+1)
             print("auto assigned to thread: {}\n\n".format(threading.current_thread().name))
             driver.quit()
