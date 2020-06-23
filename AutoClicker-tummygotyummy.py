@@ -42,7 +42,8 @@ def auto(rep,url):
             time.sleep(np.random.randint(7,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(np.random.randint(7,10))
-            driver.get(links[0])
+            xpath = '//*[@id="skip_bu2tton"]'
+            driver.find_element_by_xpath(xpath).click()
             time.sleep(np.random.randint(7,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(np.random.randint(7,10))
@@ -72,7 +73,8 @@ def auto_mobile(rep,url):
             time.sleep(np.random.randint(7,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(np.random.randint(7,10))
-            driver.get(links[0])
+            xpath = '//*[@id="skip_bu2tton"]'
+            driver.find_element_by_xpath(xpath).click()
             time.sleep(np.random.randint(7,10))
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(np.random.randint(7,10))
