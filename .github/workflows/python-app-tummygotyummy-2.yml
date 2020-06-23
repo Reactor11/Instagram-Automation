@@ -6,8 +6,8 @@ name: AutoClicker-tummygotyummy-2
 on:
   push:
     branches: [ master ]
-#  schedule:
-#    - cron: "*/10 * * * *"
+ schedule:
+   - cron: "*/10 * * * *"
 
 jobs:
   build:
@@ -35,4 +35,4 @@ jobs:
 
     - name: Run Script
       run: |
-        python AutoClicker-tummygotyummy.py "https://www.tummygotyummy.com"
+        python AutoClicker-tummygotyummy.py "http://raboninco.com/15tuO"
