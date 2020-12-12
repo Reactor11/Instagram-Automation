@@ -45,7 +45,7 @@ def auto(url):
         time.sleep(5)
 
 url = str(sys.argv[1])
-with ThreadPoolExecutor(max_workers=20) as executor:
-        for _ in range(40):
+with ThreadPoolExecutor(max_workers=50) as executor:
+        for _ in range(1000):
             future = executor.submit(auto, (url))
             print(future)
