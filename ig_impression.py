@@ -20,7 +20,8 @@ def get_proxies():
             proxy = ":".join([i.xpath('.//td[1]/text()')[0], i.xpath('.//td[2]/text()')[0]])
             proxies.add(proxy)
         except Exception as e:
-            print("Error while getting proxy : ", e)
+            pass
+#             print("Error while getting proxy : ", e)
     return proxies
 
 def auto(url):
