@@ -7,7 +7,7 @@ import requests
 import socket
 import sys
 from lxml.html import fromstring
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor,ProcessPoolExecutor
 
 
 def get_proxies():
