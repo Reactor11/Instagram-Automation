@@ -36,13 +36,12 @@ def auto(url):
         loc = os.path.abspath(os.getcwd()) + "/chromedriver"
         driver = webdriver.Chrome(loc, chrome_options=chrome_options)
         driver.get(url)
-        time.sleep(np.random.randint(5,10))
+        time.sleep(2)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         print("Successful click")
         driver.quit()
     except Exception as e :
         print("ERROR : ",e)
-        time.sleep(5)
 
 url = str(sys.argv[1])
 with ThreadPoolExecutor(max_workers=50) as executor:
