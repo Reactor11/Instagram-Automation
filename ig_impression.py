@@ -25,6 +25,7 @@ def get_proxies():
 
 def auto(url):
     try:
+        print("Task running")
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--incognito")
         chrome_options.add_argument("--headless")
@@ -37,14 +38,7 @@ def auto(url):
         driver.get(url)
         time.sleep(np.random.randint(5,10))
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(np.random.randint(5,10))
-        case_study_path = '//*[@id="comp-k9y7oef73label"]'
-        driver.find_element_by_xpath(case_study_path).click()
-        time.sleep(np.random.randint(5,10))
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(np.random.randint(5,10))
-        print("Successful click : ",i+1)
-        print("auto assigned to thread: {}\n\n".format(threading.current_thread().name))
+        print("Successful click")
         driver.quit()
     except Exception as e :
         print("ERROR : ",e)
