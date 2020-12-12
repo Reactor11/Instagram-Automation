@@ -33,8 +33,8 @@ jobs:
  
     - name: Run Script
       run: |
-        python ig_impression.py "https://www.instagram.com/p/CIs_W2-MU0M/?igshid=2nbkek49imi"
-        python ig_impression.py "https://www.instagram.com/p/CIs_W2-MU0M/?igshid=2nbkek49imi"
-        python ig_impression.py "https://www.instagram.com/p/CIs_W2-MU0M/?igshid=2nbkek49imi"
-        python ig_impression.py "https://www.instagram.com/p/CIs_W2-MU0M/?igshid=2nbkek49imi"
-        python ig_impression.py "https://www.instagram.com/p/CIs_W2-MU0M/?igshid=2nbkek49imi"
+        python ig_impression.py ${{ secrets.IG_POST_URL }}
+        python ig_impression.py ${{ secrets.IG_POST_URL }}
+        python ig_impression.py ${{ secrets.IG_POST_URL }}
+        python ig_impression.py ${{ secrets.IG_POST_URL }}
+        python ig_impression.py ${{ secrets.IG_POST_URL }}
