@@ -46,7 +46,7 @@ def auto(url):
 
 url = str(sys.argv[1])
 print(url)
-with ThreadPoolExecutor(max_workers=50) as executor:
+with ProcessPoolExecutor(max_workers=50) as executor:
         for _ in range(1000):
             future = executor.submit(auto, (url))
             print(future)
